@@ -1,0 +1,281 @@
+:root {
+    --primario: #9C27B0;
+    --primarioOscuro: #89119D;
+    --secundario: #FFCE00;
+    --secundarioOscuro: rgb(233,287,2);
+    --blanco: #fff;
+    --negro: #000;
+
+    --fuentePrincipal: "Staatliches", sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box; /*Esto debe estar en todos nuestros proyectos*/
+}
+
+*, *::before, *::after {
+    box-sizing: inherit; /*Esto viene de la mano del box-sizing de arriba, tiene que estar siempre*/
+}
+
+/*Globales*/
+body {
+    font-family: var(--fuentePrincipal);
+    font-size: 16px; /* 16px * 62.5% = 10px --> 1rem = 10px */
+    background-color: var(--primario);
+    line-height: 1.5;
+}
+
+p {
+    color: var(--blanco);
+    font-size: 1.8rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 100%;
+}
+
+.contenedor {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+h1, h2, h3 { 
+    color: var(--secundario);
+    font-family: var(--fuentePrincipal);
+    text-align: center;
+}
+
+h1{font-size: 4rem;}
+h2 {font-size: 3.2rem;}
+h3{font-size: 2.4rem;}
+
+/*Header*/
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.header__logo {
+    margin: 2rem 0;
+}
+
+/*Navegacion*/
+.navegacion {
+    display: flex;
+    justify-content: center;
+    background-color: var(--primarioOscuro);
+    /*gap: 2rem;*/ /*Este es una separacion para los elementos de flexbox - Es una funcion de grid que la integraron a flexbox recientemente*/
+    padding: 1rem 0;
+}
+
+.navegacion__enlace {
+    color: var(--blanco);
+    font-size: 2.2rem;
+    font-family: var(--fuentePrincipal);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-right: 2rem;
+}
+.navegacion__enlace:last-child {
+    margin-right: 0;
+}
+
+.navegacion__enlace:hover, .navegacion__enlace--activo {
+    color: var(--secundario);
+}
+
+/*Producto*/
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin: 1rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /*.producto:nth-child(4) {
+        grid-column: 1/3;
+    }*/
+}
+
+.producto {
+    background-color: var(--primarioOscuro);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 0 0;
+}
+
+.producto__nombre {
+    font-size: 3rem;
+}
+
+.producto__precio {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--secundario);
+}
+
+.producto__precio, .producto__nombre {
+    font-family: var(--fuentePrincipal);
+    margin: 1rem 0;
+}
+
+.producto__imagen {
+    width: 100%;
+}
+
+/*Imagenes mas grandes*/
+.grafico {
+    background-color: var(--primarioOscuro);
+    min-height: 30rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    grid-column: 1/3;
+}
+
+.grafico--camisas {
+    grid-row: 2/3;
+    background-image: url(../img/grafico1.jpg);
+}
+
+.grafico--node {
+    grid-row: 8/9;
+    background-image: url(../img/grafico2.jpg);
+}
+
+@media (min-width: 768px) {
+    
+    .grafico--camisas {
+        grid-row: 2/3;
+        grid-column: 1/3;
+    }
+    
+    .grafico--node{
+        grid-row: 5/6;
+        grid-column: 2/4;
+    }
+}
+
+/*Nosotros*/
+.nosotros__informacion {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    margin: 1.5rem;
+    text-align: center;
+}
+
+.nosotros__imagen {
+    grid-row: 1/2;
+}
+.nosotros__imagen img {
+    min-height: 20rem;
+    border-radius: 1rem;
+}
+
+@media (min-width: 768px) {
+    .nosotros__informacion {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 2rem;
+    }
+    .nosotros__imagen {
+        grid-column: 2/3;
+    }
+}
+
+/*Iconos*/
+.comprar__titulo {
+    font-weight: 400;
+}
+
+.bloques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    text-align: center;
+}
+
+.bloque__titulo {
+    margin: 0;
+    font-weight: 400;
+}
+
+@media (min-width: 768px) {
+    .bloques {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/*Pagina del producto*/
+@media (min-width: 768px) {
+    .camisa {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+/*Formulario Producto*/
+.formulario{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: .5rem;
+}
+
+.formulario__submit {
+    background-color: var(--secundarioOscuro);
+    font-size: 2rem;
+    font-family: var(--fuentePrincipal);
+    padding: 1.7rem;
+    border: none;
+    grid-column: 1/3;
+    transition: background-color .3s ease, font-size .3s ease;
+    margin: 0 .5rem;
+}
+
+.formulario__submit:hover {
+    background-color: var(--secundario);
+    cursor: pointer;
+    font-size: 2.2rem;
+}
+
+.formulario__campo{
+    background-color: var(--primario);
+    border: 1.2rem solid var(--primarioOscuro);
+    padding: 1rem;
+    color: var(--blanco);
+    font-size: 1.9rem;
+}
+
+.formulario__campo::placeholder{
+    color: var(--blanco); /*De esta forma convierto a blanco el placeholder del campo cantidad que por defecto viene gris*/
+}
+
+.formulario__campo--centrado {
+    text-align: center;
+}
+
+/*footer*/
+.footer{
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+.footer__texto {
+    text-align: center;
+    font-family: var(--fuentePrincipal);
+    font-size: 2.2rem;
+}
